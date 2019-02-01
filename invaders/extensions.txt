@@ -1,0 +1,41 @@
+# Annie Cheng zc375; Ruitong rl699
+# November 29, 2018
+
+I have added six extensions.
+
+1. Multiple Waves. Once the player reaches STATE_COMPLETE, he/she can choose to
+continue playing the game by pressing a key. Then a new wave is created and the
+game continues. If the player has previously won, the alien speed would be
+1/2 of that of the previous game; if the player has previously lost, the alien
+speed would stay the same as that of the previous game. I have added a new
+attribute to class Wave, _alienspeed, and a new state in class Invaders,
+STATE_NEWGAME, to support this extension.
+
+2. Implement Sound Effects. There's "pew" sound when the player fires a bolt,
+"pop" sound when a bolt collides with an alien, "blast" sound when a bolt
+collides with the ship. There's a pattern of sounds when the alien moves. In
+addition, when the player wins or loses, there are win sound and lose sound.
+Moreover, when the player can press "M" to mute sounds and "U" to unmute.
+Sources of sounds besides the given ones: https://freesound.org/
+
+3. Dynamically Speed Up the Aliens. The aliens speed up as the player kills
+them with a factor of SPEED_FACTOR. This extension is added in the _collision
+function in wave.py.
+
+4. Lives and Levels. The player has in total three lives in
+each wave. Every time the alien bolt hits the ship, a life is lost. When the
+game end and the player wins, the game moves to the next level, in which the
+aliens spped up by a factor of SPEED_FACTOR2. This function is added in the
+_stateNewWave function in app.py. However, if the player loses, it asks if the
+player wants to try again in the same level.
+
+(Player wins when all aliens are killed; lost when 1. all three lives of the
+ship are lost, 2. any alien hits the defense line)
+
+5. Keep Track of Score. Aliens in the bottom line worths 10 points. As the
+aliens go up in every two rows, they worth two times of the points as the
+previous one. For a set of aliens with 5 rows, each alien on the bottom row
+worths 10 points; third row worths 20 points; and the top row worths 40 points.
+
+6. Display of Instruction. When the program starts, it displays "Space Invader",
+the name of the game. Then, it displays the basic instructions to play.
